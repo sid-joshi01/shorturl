@@ -27,7 +27,8 @@ app.get('/test', (req, res) => {
   ];
   return res.render('home', { urls: allUrls });
 });
-app.use('/url', restrictoLoggedinUserOnly, urlRoutes);
+// app.use('/url', restrictoLoggedinUserOnly, urlRoutes);
+app.use('/url', urlRoutes);
 app.use('/', staticRouter);
 app.use('/user', userRoutes);
 
