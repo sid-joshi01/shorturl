@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <!-- /* <h1>Hey From Server</h1>
+    <ul>
+        <% urls.forEach(url => { %>
+            <li>
+                <a href="<%= url.shortId %>"><%= url.redirectUrl %></a>
+            </li>
+        <% }) %>
+    </ul> */ -->
+    <h1>URL Shortener</h1>
+    <form method="POST" action="/url">
+        <label>Enter your original URL</label>
+        <input type="text" name="redirectUrl" placeholder="http://example.com" required>
+        <button type="submit">Generate</button>
+    </form>
+</body>
+</html>

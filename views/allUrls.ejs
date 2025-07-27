@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>URL Shortner</h1>
+    <% if (urls) { %>
+        <h2>Generated Short URL: <a href="http://localhost:8001/url/<%= urls.id %>">http://localhost:8001/url/<%= urls.id %></a></h2>
+    <% } %>
+    <div>
+        <form action="/url/post" method="POST">
+            <label for="">Enter Your Original Url</label>
+            <input type="text" name="url" placeholder="https://example.com" required>
+            <button type="submit">Generate</button>
+        </form>
+    </div><br>
+    <div>
+        <table>
+            <thead>
+                <th>Sr. no.</th>
+                <th>Short Id</th>
+                <th>Redirect</th>
+                <th>Click Count</th>
+            </thead>
+            <tbody>
+                <% if (urls && urls.length > 0) { %>
+                    <% urls.forEach((url, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= url.shortId %></td>
+                            <td><a href="/url/<%= url.shortId %>"><%= url.redirectUrl %></a></td>
+                            <td><%= url.visitHistory.length %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">No URLs found</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
